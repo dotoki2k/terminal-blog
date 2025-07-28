@@ -1,0 +1,255 @@
+:root {
+    --background: #1a1b26;
+    --foreground: #c0caf5;
+    --prompt: #a9b1d6;
+    --commandInput: #c0caf5;
+    --success: #9ece6a;
+    --error: #f7768e;
+    --link: #7aa2f7;
+    --directory: #7aa2f7;
+    --file: #c0caf5;
+    --tag-bg: #292e42;
+    --tag-fg: #7aa2f7;
+    --header-bg: #1f2335;
+    --body-bg: #10101a;
+    --hover-bg: #2a2f41;
+}
+
+body {
+    background-color: var(--body-bg);
+    color: var(--foreground);
+    font-family: 'Fira Code', Monaco, Consolas, 'Courier New', monospace;
+    font-size: 16px;
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+#terminal-window {
+    width: 70vw;
+    height: 95vh;
+    background-color: var(--background);
+    border: 1px solid var(--prompt);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#header {
+    background-color: var(--header-bg);
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--prompt);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo {
+    height: 45px; /* Adjust height as needed */
+    margin-right: 15px;
+}
+
+#button-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-grow: 1; /* Allow button bar to take up available space */
+}
+
+.cmd-button {
+    background-color: var(--tag-bg);
+    color: var(--prompt);
+    border: 1px solid var(--prompt);
+    border-radius: 4px;
+    padding: 5px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.cmd-button:hover {
+    background-color: var(--prompt);
+    color: var(--background);
+}
+
+#search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--tag-bg);
+    border: 1px solid var(--prompt);
+    border-radius: 4px;
+    padding: 0 5px;
+}
+
+#search-input {
+    background-color: transparent;
+    border: none;
+    color: var(--foreground);
+    padding: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    width: 150px;
+}
+
+#search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#search-button svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--prompt);
+    transition: fill 0.2s;
+}
+
+#search-button:hover svg {
+    fill: var(--foreground);
+}
+
+#output-area {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    word-wrap: break-word;
+}
+
+#input-line-container {
+    padding: 0 10px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    border-top: 1px solid var(--header-bg);
+}
+
+#input-line {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+}
+
+#prompt {
+    color: var(--prompt);
+    margin-right: 8px;
+    white-space: nowrap;
+}
+
+#command-input {
+    background-color: transparent;
+    border: none;
+    color: var(--commandInput);
+    width: 100%;
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+#command-input::placeholder {
+    color: var(--prompt);
+    opacity: 0.6;
+}
+
+.output-line { margin-bottom: 2px; white-space: pre-wrap; }
+.command-echo { display: flex; }
+.command-echo .prompt { color: var(--prompt); margin-right: 8px; }
+.command-echo .command-text { color: var(--foreground); }
+.error { color: var(--error); }
+.directory { color: var(--directory); }
+.link { color: var(--link); text-decoration: underline; cursor: pointer; }
+#output-area::-webkit-scrollbar { width: 8px; }
+#output-area::-webkit-scrollbar-track { background: var(--background); }
+#output-area::-webkit-scrollbar-thumb { background-color: var(--prompt); border-radius: 4px; }
+
+/* --- Markdown Render Styles --- */
+.post-body h1, .post-body h2, .post-body h3, .post-body h4 { color: var(--success); margin: 1em 0 0.5em 0; border-bottom: 1px solid var(--tag-bg); padding-bottom: 0.25em; }
+.post-body p { line-height: 1.6; margin: 0 0 1em 0; }
+.post-body ul, .post-body ol { margin: 0.5em 0 1em 0; padding-left: 25px; }
+.post-body li { margin-bottom: 0.5em; }
+.post-body code { background-color: var(--tag-bg); padding: 2px 4px; border-radius: 4px; font-size: 0.9em; }
+.post-body pre { background-color: var(--tag-bg); padding: 10px; border-radius: 4px; overflow-x: auto; margin-bottom: 1em; }
+.post-body pre code { background-color: transparent; padding: 0; }
+.post-body blockquote { border-left: 4px solid var(--prompt); padding-left: 10px; margin: 0 0 1em 0; color: var(--prompt); font-style: italic; }
+.post-body a { color: var(--link); }
+.post-body table { border-collapse: collapse; margin-bottom: 1em; width: 100%; }
+.post-body th, .post-body td { border: 1px solid var(--prompt); padding: 8px; }
+.post-body th { background-color: var(--header-bg); }
+/* --- End Markdown Styles --- */
+
+.post-details { color: var(--prompt); font-style: italic; margin-bottom: 0.5em; font-size: 0.9em; }
+.post-tags { margin-bottom: 1em; }
+.tag { background-color: var(--tag-bg); color: var(--tag-fg); padding: 2px 6px; border-radius: 4px; font-size: 0.8em; margin-right: 5px; display: inline-block; }
+
+/* --- 'help' command layout --- */
+.help-line {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 4px;
+    white-space: pre;
+}
+.help-command {
+    flex: 0 0 240px;
+    color: var(--file);
+}
+.help-description {
+    flex: 1;
+}
+
+/* --- 'ls' command layout --- */
+.ls-line {
+    display: flex;
+    align-items: flex-start;
+    padding: 4px 0;
+    border-bottom: 1px dashed var(--tag-bg);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 2px;
+}
+.ls-line:hover {
+    background-color: var(--hover-bg);
+}
+.ls-line.header {
+    font-weight: bold;
+    border-bottom: 1px solid var(--prompt);
+    cursor: default;
+}
+.ls-line.header:hover {
+    background-color: transparent;
+}
+.ls-slug {
+    flex: 0 0 20%;
+    padding-right: 1em;
+    word-break: break-word;
+    color: var(--prompt);
+}
+.ls-title {
+    flex: 0 0 50%;
+    padding-right: 1em;
+    word-break: break-word;
+    color: var(--file);
+}
+.ls-tags {
+    flex: 0 0 15%;
+    padding-right: 1em;
+    color: var(--foreground);
+    word-break: break-word;
+}
+.ls-author {
+    flex: 0 0 8%;
+    color: var(--directory);
+    word-break: break-word;
+}
